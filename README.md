@@ -1,124 +1,54 @@
-# GA PROJECT 01 - ALICE LO
+# ga-project-02
 
-## Project Description
+Description
 
-A pair-coding project where we utilize a free API to fetch data and build a website using React. The Pokedex is built using The Poke API (https://pokeapi.co/). The website shows users all the pokemons to date with individual info of name, picture, type, habitat, and descriptions.
+This project was assigned at the end of the fifth week of General Assembly’s 3-month SEI (Software Engineering Immersive) course, in which I am studying the fundamentals of software engineering with the aim to launch a career in this sector. The aim of the project was to show our ability at handling API's and manipulating the data we receive, we worked in pairs. I chose Pokemon.
 
-## Deployment Link
+Deployment link:
 
-TBC
+Technologies Used: To complete this project I employed JavaScript and React for the functionality.
 
-## Working Team & Timeframe
+Brief: With this project, we were given the brief to build a index in two days, working in pairs. The API could one of a pre-found API's or one that we found in our team. We picked Pokemon, as I found it to be the most engaging of the choices.
 
-Working team:
+Our API had to: Show all the pokemon on one page, and show individual pokemon when clicked on, along with one other functionality.
 
-- Alice Lo (https://github.com/siuusunn)
-- Jet Haze (https://github.com/CodebyJet/)
+Planning: The first day of the project, I spent planning it out, with a rough idea of what I wanted the end result to look like, what functions I thought I would need and how I may implement them. I used excalidraw to plan the wireframe of my game
 
-Timeframe:
-01/12/2022 - Project start
-02/12/2022 - MVP done
-05/12/2022 - Project finish
+<picture>
 
-## Technologies Used
+Stage 1: The Grid With the grid, I made a 10 by 10 grid of div's within a div that held the dimensions that I was aiming for. I originally started with a grid twice the size it ended being, as I didn't like how small all the sprites looked in the end result.
 
-Front End: React, Sass, Bulma
+<picture>
 
-Development Tools: Visual Code Studio
+Stage 2: Dividing the tasks. Alice created the page to show all the pokemon, and I displayed the individual pokemon when clicked on.
 
-## Brief
+Stage 3: As a started, I focused on getting just one set pokemon to appear, and then adapting the url to be changeable to all the pokemon. To start, I just showed Bulbasaur. 
 
-Use a public RestfulAPI to build a web app using React.js
+<picture>
 
-## Planning
+Stage 4: Of this data, I wanted to show, the name, picture of the pokemon, where to find them and the pokedex entry about them.
 
-Created a wireframe to get started with our basic components of the website, and listed out all the features and components needed for the MVP, divided the work between the team.
+<picture>
 
-![Planning_Image](./ReadMeAssets/readme-planning.png)
+The data for the API was very nested, and not all the keys of the objects were in the right order, or in english. The habitat and pokedex entry also, weren't kept with the pictures and names of the pokemon, so I had to pair them up, I created a function to find the first of each entry with a 'en' - English entry to display.
 
-## Code Process
+Stage 5: Integrating. Now that I could display Bulbasaur and all the data I wanted to show with them, it was time to merge the two halves and fix any merge disputes that may occur.
 
-The development is divided into six main components:
+Stage 6: Now, to be able to show all the pokemon when clicked on. For this I mostly just changed the URL that the data was set to pull, from Bulbasaur to a more dynamic base that went off the pokemon's ID.
 
-- Navbar
-- Home
-- Pokedex
-- Individual Pokemon Page
-- Search Bar
-- Footer
+Stage 7: After some testing to see if it all worked, I noticed some Pokemon don't have habitat or pokedex entries (mostly they were just pikachu's in different hats or event special pokemon). For these, I put that if if didn't have one of these, to show as 'Unknown' or 'this pokemon hasn't been studied yet'
 
-My responsibilities for this project are: Navbar, Pokedex, Footer, as well as the general design of the app.
+Stage 8: The Search Bar. With us finished the base MVP, we moved onto adding more functionality to the site. Alice wanted to add the ability to filter by type on the display all Pokemon part, and I wanted the ability to search for specific pokemon.
 
-### Navbar
+(attach picture)
 
-The navbar is straight-forward and simple, I used Bulma to style it up and added a little animation to the Pokeball icon when user hover over it:
+The Search bar: I found this actually fairly straight forward, I created a handleChange, that would navigate you to the specific pokemon. However, this only really works if you know exactly how to spell the pokemon, and as a dyslexic, I find it hard to spell every pokemon, so I wanted an autocomplete - style feature, that would assist the user in navigating the site. Using a combination of map and match to find the pokemon with the characters you are after, and slice to only display a certain number at a time (as there are over 1000 pokemon, the list could get very long), I created a base autocomplete. I adapted this to be able to click on the filtered results, and this would also navigate the user to the desired Pokemon.
 
-![Navbar_Example](./ReadMeAssets/Navbar-example.gif)
+(attach picture)
 
-### Pokedex
+The filtered show all: We ran into some difficulties here. As the API was so large, it would only display the first 20 Pokemon, we adapted the url to have no filter, and hence show all the pokemon, this however, gave us back harder to use data. Mostly the pokemons name, and a url for the pokemon. Alice then tried to integrate the types I had set for them on the individual page a a key or value for them on the show all page. This proved hard than anticipated, and sadly didn't not make the deadline.
 
-The Pokedex component uses `getAllPokemon()` to fetch data from the API. As the endpoint to gert all the pokemons only gives back an array of objects comprised of names and urls only:
+With the styling added and fleshed out the site, the project was complete.
 
-```"results": [
-{
-"name": "bulbasaur",
-"url": "https://pokeapi.co/api/v2/pokemon/1/"
-},
-{
-"name": "ivysaur",
-"url": "https://pokeapi.co/api/v2/pokemon/2/"
-},
-{
-"name": "venusaur",
-"url": "https://pokeapi.co/api/v2/pokemon/3/"
-}
 
-```
-
-So I used the `map` function and pass the names to the PokedexCard component to generate a new endpoint to fetch data for all the individual cards:
-
-```useEffect(() => {
-axios
-  .get(`${BASE_URL}/${pokemon}`)
-  .then((res) => {
-    setSinglePokemonImage(res.data.sprites.other['official-artwork'].front_default);
-    setPokemonType(res.data.types[0].type.name);
-  })
-  .catch((err) => console.error(err.response));
-}, []);
-```
-
-Using the above methods I managed to generate the cards to show all pokemons in the pokedex:
-
-![Pokedex_Example](./ReadMeAssets/pokedex-example.png)
-
-## Challenges
-
-The API does not provide one endpoint that gives access to all the data. For example, the `https://pokeapi.co/api/v2/pokemon?offset=0&limit=1154` endpoint sends back a list of pokemon names and urls to their individual endpoints.
-
-It is more diffucult to get the data and thus I had to write another `get` function in another component to get the desired data. This was also a major block when I was trying to write a filter function for the `Pokedex.js` component.
-
-## Wins
-
-### Data Fetching
-
-As mentioned above, the way the API is set up makes it quite difficult to access desired data. A big win is definitely passing the names of pokemons from getAllPokemons() to the PokedexCard.js component to generate individual endpoints to fetch the data for all the individual pokemons.
-
-### Design
-
-The app features a design that resembles the Pokemon Center in the Pokemon franchises, and I put thoughts in making the app cohesive and showing relevant data only to make the user experience enjoyable.
-
-## Key Learnings/ Takeaways
-
-- Mastering React hooks like useState
-- How to fetch data that is multiple layers deep and nested in different objects and arrays
-- Using external packages like Bulma on styling
-
-## Bugs
-
-- The results list of the search bar doesn't clear after the input field is cleared
-
-## Future Improvements
-
-- Filter function for the Pokedex page
-- Sort function for the Pokedex page
+Future Improvements: In future iterations, I will come back to this and add the filter by types functionality, as I think it would be really neat.
