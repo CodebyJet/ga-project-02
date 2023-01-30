@@ -1,10 +1,10 @@
 # ga-project-02
 
-Description
+## Description
 
 This project was assigned at the end of the fifth week of General Assembly’s 3-month SEI (Software Engineering Immersive) course, in which I am studying the fundamentals of software engineering with the aim to launch a career in this sector. The aim of the project was to show our ability at handling API's and manipulating the data we receive, we worked in pairs. I chose Pokemon.
 
-Deployment link:
+## Deployment link:
 
 Technologies Used: To complete this project I employed JavaScript and React for the functionality.
 
@@ -51,4 +51,5 @@ The filtered show all: We ran into some difficulties here. As the API was so lar
 With the styling added and fleshed out the site, the project was complete.
 
 
-Future Improvements: In future iterations, I will come back to this and add the filter by types functionality, as I think it would be really neat.
+## Future Improvements:
+In future iterations, I will come back to this and add the filter by types functionality, as I think it would be really neat.
