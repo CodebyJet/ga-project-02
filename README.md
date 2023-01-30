@@ -16,7 +16,8 @@ Planning: The first day of the project, I spent planning it out, with a rough id
 
 <picture>
 
-Stage 1: The Grid With the grid, I made a 10 by 10 grid of div's within a div that held the dimensions that I was aiming for. I originally started with a grid twice the size it ended being, as I didn't like how small all the sprites looked in the end result.
+### Stage 1:
+Planning - A wireframe for the work ahead.
 
 <picture>
 
