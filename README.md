@@ -11,7 +11,7 @@ Unfortunately, this is currently not deployed, due to a NPM error on my machine
 To complete this project I employed JavaScript and React for the functionality.
 
 ## Brief:
-With this project, we were given the brief to build a index in two days, working in pairs. The API could one of a pre-found API's or one that we found in our team. We picked Pokemon, as I found it to be the most engaging of the choices.
+With this project, we were given the brief to build a react application in two days, working in pairs. It had to be a public API, either one of a pre-selected group of API's or one that we found in our team. I picked Pokemon, as I found it to be the most engaging of the choices.
 
 Our API had to: Show all the pokemon on one page, and show individual pokemon when clicked on, along with one other functionality.
 
