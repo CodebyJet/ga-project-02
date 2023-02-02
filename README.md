@@ -1,4 +1,4 @@
-# ga-project-02
+# PokeAPI
 
 ## Description
 
@@ -6,6 +6,11 @@ This project was assigned at the end of the fifth week of General Assembly’s 3
 
 ## Deployment link:
 Unfortunately, this is currently not deployed, due to a NPM error on my machine
+
+## Setup:
+Clone the repo locally, then open in VS code, using:
+‘code .’
+Then: npm start
 
 ## Technologies Used: 
 To complete this project I employed JavaScript and React for the functionality.
